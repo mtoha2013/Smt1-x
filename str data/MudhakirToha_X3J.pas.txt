@@ -1,0 +1,47 @@
+program MudhakirToha_X3J;
+
+uses
+  crt;
+
+type
+  RecordKeluarga = record
+    nama: string;
+    nip: string;
+    jenisNip: string;
+    gender: string;
+    tahunLahir: integer;
+  end;
+var
+  dataKeluarga: RecordKeluarga;
+begin
+  ClrScr;
+  WriteLn('Masukkan Data Keluarga');
+  Write('Nama = ');
+  ReadLn(dataKeluarga.nama);
+  Write('NIP = ');
+  ReadLn(dataKeluarga.nip);
+  with dataKeluarga do
+  begin
+    Write('Jenis NIP = ');
+    ReadLn(jenisNip);
+    Write('Gender = ');
+    ReadLn(gender);
+    Write('Tahun Lahir = ');
+    ReadLn(tahunLahir);
+  end;
+  WriteLn('---------------------------------------');
+  WriteLn('Data yang anda inputkan : ');
+  WriteLn('Nama : ', dataKeluarga.nama);
+  WriteLn('NIP : ', dataKeluarga.nip);
+  WriteLn('Jenis NIP : ', dataKeluarga.jenisNip);
+  WriteLn('Gender : ', dataKeluarga.gender);
+  WriteLn('Tahun Lahir : ', dataKeluarga.tahunLahir);
+  WriteLn('Terima Kasih');
+  WriteLn();
+  WriteLn('Oleh : Mudhakir Toha');
+  WriteLn('NPM 201643570041');
+  WriteLn('Tugas Record dengan Min 3 Field (untuk NPM paling akhir 1)');
+  WriteLn('(Pertemuan 2016 Oct 22)');
+  ReadLn;
+
+end.

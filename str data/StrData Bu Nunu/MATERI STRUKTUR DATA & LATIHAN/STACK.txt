@@ -1,0 +1,93 @@
+program membalik_urutan_angka;
+uses crt;
+const maks_stack = 10;
+type tipedata = integer;
+tipestack = record
+          top :0..maks_stack;
+          data : array[1..maks_stack] of tipedata
+end;
+
+
+var
+s       :tipestack;
+x       :tipedata;
+angka   :tipedata;
+lanjut  :boolean;
+temp    :char;
+
+
+procedure inisialisasi (var s : tipestack);
+begin
+     s.top := 0
+end;
+
+
+function kosong (s :tipestack): boolean;
+begin
+     kosong := (s.top = 0)
+     end;
+procedure error1;
+begin
+write('stack penuh, angka terlalu banyak');
+lanjut:=false;
+end;
+
+function penuh(s : tipestack): boolean;
+begin
+     penuh := (s.top = maks_stack)
+end;
+
+procedure push(x : tipedata; var s : tipestack);
+begin
+     if penuh(s) then
+     error1 {prosedure untuk memberitahu stack penuh}
+     else
+     begin
+        s.top := s.top + 1;
+          s.data[s.top] :=x;
+          end;
+end;
+
+
+procedure pop (var x : tipedata; var s : tipestack);
+begin
+     if kosong (s) then
+     error1
+     else
+     begin
+          x:= s.data[s.top];
+          s.top := s.top - 1;
+          end;
+end;
+
+{program utama}
+begin
+repeat
+clrscr;
+writeln('membalik urutan angka');
+writeln('masukkan barisan angka, pisahkan dengan spasi,akhiri dengan angka 0');
+write('----->:');  read(angka);
+lanjut:=true;
+while lanjut and (angka <>0) do
+
+begin
+     x := angka;
+     push(x,s);
+     read(angka);
+end;
+
+writeln;
+writeln('barisan angka dengan urutan terbalik :');
+write('<-----:');
+
+while not (kosong(s)) do
+begin
+pop(x,s);
+write(x,' ');
+end;
+
+writeln;
+write('coba lagi dengan data yang lain (y/n)?  []');
+gotoxy (wherex-2, wherey);
+temp := readkey until upcase(temp) = 'n'
+end.
